@@ -1,6 +1,6 @@
 (function () {
   const ROOT_ID = "mkAlbumWidget";
-  const LYRICS_URL = "https://midnightkana.github.io/midnight-kana-lyrics/lyrics.json";
+  const LYRICS_URL = root.getAttribute("data-lyrics-url");
 
   const root = document.getElementById(ROOT_ID);
   if (!root) return;
@@ -351,7 +351,7 @@
 
   <div class="mk-header">
     <p class="mk-kicker">MIDNIGHT KANA // 歌詞</p>
-    <h3>N5 After Dark</h3>
+    <h3>${root.getAttribute("data-album-title") || "N5 After Dark"}</h3>
     <p class="mk-subtitle">Select a track to open the lyric blade</p>
   </div>
 
