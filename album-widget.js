@@ -1,9 +1,9 @@
 (function () {
   const ROOT_ID = "mkAlbumWidget";
-  const LYRICS_URL = root.getAttribute("data-lyrics-url");
-
   const root = document.getElementById(ROOT_ID);
   if (!root) return;
+
+  const LYRICS_URL = root.getAttribute("data-lyrics-url");
 
   root.classList.add("mk-album-widget");
 
