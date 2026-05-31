@@ -1,0 +1,30 @@
+[
+  {
+    "number": "01",
+    "title": "Counting in Japanese",
+    "lyrics": [
+      "Counting in Japanese.",
+      "",
+      "かぞえましょう。",
+      "",
+      "いち。",
+      "に。",
+      "さん。",
+      "",
+      "いち、に、さん。"
+    ]
+  },
+  {
+    "number": "02",
+    "title": "Ramen, Beer, and Letters",
+    "lyrics": [
+      "I eat ramen.",
+      "ラーメンを",
+      "食べます。",
+      "",
+      "I drink beer.",
+      "ビールを",
+      "飲みます。"
+    ]
+  }
+]
