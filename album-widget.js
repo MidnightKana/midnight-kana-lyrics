@@ -424,13 +424,22 @@
     });
   }
 
-  function openBlade(songTitle, songLyrics) {
-    title.textContent = songTitle;
-    lyrics.textContent = formatLyrics(songLyrics);
-    blade.classList.add("open");
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-  }
+function openBlade(songTitle, songLyrics) {
+  title.textContent = songTitle;
+  lyrics.textContent = formatLyrics(songLyrics);
+
+  blade.scrollTop = 0;
+  lyrics.scrollTop = 0;
+
+  blade.classList.add("open");
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+
+  requestAnimationFrame(function () {
+    blade.scrollTop = 0;
+    lyrics.scrollTop = 0;
+  });
+}
 
   function closeBlade() {
     blade.classList.remove("open");
