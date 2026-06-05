@@ -221,6 +221,8 @@
   top: 0;
   right: 0;
   width: 50vw;
+  visibility: hidden;
+  opacity: 0;
   min-width: 360px;
   max-width: none;
   height: 100vh;
@@ -243,13 +245,22 @@
     -24px 0 70px rgba(255, 45, 198, 0.22),
     inset 0 0 42px rgba(255, 255, 255, 0.025);
   transform: translateX(105%);
-  transition: transform 0.28s ease;
+  transition:
+  transform 0.28s ease,
+  opacity 0.18s ease,
+  visibility 0s linear 0.28s;
   z-index: 9999;
   font-family: Inter, "Inter", sans-serif;
 }
 
 .mk-blade.open {
   transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+  transition:
+    transform 0.28s ease,
+    opacity 0.18s ease,
+    visibility 0s linear 0s;
 }
 
 .mk-close {
