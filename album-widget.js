@@ -217,66 +217,40 @@
 }
 
 .mk-blade {
-  display: none;
+  display: block;              /* always block — no toggling */
   position: fixed;
   top: 0;
   right: 0;
   width: 50vw;
-  visibility: hidden;
-  opacity: 0;
   min-width: 360px;
   max-width: none;
   height: 100vh;
   padding: 42px 34px;
   overflow-y: auto;
   border-left: 1px solid rgba(255, 54, 202, 0.62);
-  background:
-    linear-gradient(90deg, rgba(255, 45, 198, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(71, 157, 255, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at top right, rgba(255, 45, 198, 0.26), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(66, 158, 255, 0.2), transparent 36%),
-    linear-gradient(180deg, #05030b, #140621 56%, #030208);
-  background-size:
-    32px 32px,
-    32px 32px,
-    auto,
-    auto,
-    auto;
-  box-shadow:
-    -24px 0 70px rgba(255, 45, 198, 0.22),
-    inset 0 0 42px rgba(255, 255, 255, 0.025);
+  /* ...all your background/box-shadow rules... */
   transform: translateX(105%);
-  transition:
-  transform 0.28s ease,
-  opacity 0.18s ease,
-  visibility 0s linear 0.28s;
-  z-index: 9999;
-  font-family: Inter, "Inter", sans-serif;
-}
-
-.mk-blade {
-  /* change display: none → display: block */
-  display: block;
-  /* keep visibility: hidden and opacity: 0 as already set */
   visibility: hidden;
   opacity: 0;
-  transform: translateX(105%);
+  pointer-events: none;        /* ADD THIS — belt and suspenders */
   transition:
     transform 0.28s ease,
     opacity 0.18s ease,
     visibility 0s linear 0.28s;
+  z-index: 9999;
+  font-family: Inter, "Inter", sans-serif;
 }
 
 .mk-blade.open {
   transform: translateX(0);
   visibility: visible;
   opacity: 1;
+  pointer-events: auto;        /* ADD THIS */
   transition:
     transform 0.28s ease,
     opacity 0.18s ease,
     visibility 0s linear 0s;
 }
-
 .mk-close {
   position: absolute;
   top: 18px;
@@ -472,10 +446,6 @@ function openBlade(songTitle, songLyrics) {
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") closeBlade();
-  });
-
-  requestAnimationFrame(function () {
-  root.classList.add("mk-ready");
   });
   
   fetch(LYRICS_URL + "?v=" + Date.now())
