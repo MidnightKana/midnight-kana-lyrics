@@ -217,6 +217,7 @@
 }
 
 .mk-blade {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -253,7 +254,11 @@
   font-family: Inter, "Inter", sans-serif;
 }
 
-.mk-blade.open {
+.mk-album-widget.mk-ready .mk-blade {
+  display: block;
+}
+
+.mk-album-widget.mk-ready .mk-blade.open {
   transform: translateX(0);
   visibility: visible;
   opacity: 1;
@@ -465,6 +470,10 @@ function openBlade(songTitle, songLyrics) {
     if (event.key === "Escape") closeBlade();
   });
 
+  requestAnimationFrame(function () {
+  root.classList.add("mk-ready");
+  });
+  
   fetch(LYRICS_URL + "?v=" + Date.now())
     .then(function (response) {
       if (!response.ok) {
