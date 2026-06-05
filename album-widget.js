@@ -254,11 +254,20 @@
   font-family: Inter, "Inter", sans-serif;
 }
 
-.mk-album-widget.mk-ready .mk-blade {
+.mk-blade {
+  /* change display: none → display: block */
   display: block;
+  /* keep visibility: hidden and opacity: 0 as already set */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(105%);
+  transition:
+    transform 0.28s ease,
+    opacity 0.18s ease,
+    visibility 0s linear 0.28s;
 }
 
-.mk-album-widget.mk-ready .mk-blade.open {
+.mk-blade.open {
   transform: translateX(0);
   visibility: visible;
   opacity: 1;
@@ -450,11 +459,6 @@ function openBlade(songTitle, songLyrics) {
   blade.classList.add("open");
   overlay.classList.add("open");
   document.body.style.overflow = "hidden";
-
-  requestAnimationFrame(function () {
-    blade.scrollTop = 0;
-    lyrics.scrollTop = 0;
-  });
 }
 
   function closeBlade() {
