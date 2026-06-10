@@ -378,7 +378,7 @@
 
 <div class="mk-overlay" id="mkOverlay"></div>
 
-<aside class="mk-blade" id="mkBlade">
+<aside class="mk-blade" id="mkBlade" style="display: none;">
   <button class="mk-close" id="mkClose" aria-label="Close lyrics">×</button>
 
   <p class="mk-blade-kicker">LYRIC BLADE // 歌詞</p>
@@ -444,24 +444,32 @@ function openBlade(songTitle, songLyrics) {
   title.textContent = songTitle;
   lyrics.textContent = formatLyrics(songLyrics);
 
+  blade.style.display = "block";
+  blade.classList.remove("open");
+
   blade.scrollTop = 0;
   lyrics.scrollTop = 0;
 
-  blade.classList.add("open");
-  overlay.classList.add("open");
-  document.body.style.overflow = "hidden";
-
   requestAnimationFrame(function () {
+    blade.classList.add("open");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
     blade.scrollTop = 0;
     lyrics.scrollTop = 0;
   });
 }
 
   function closeBlade() {
-    blade.classList.remove("open");
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
-  }
+  blade.classList.remove("open");
+  overlay.classList.remove("open");
+  document.body.style.overflow = "";
+
+  window.setTimeout(function () {
+    if (!blade.classList.contains("open")) {
+      blade.style.display = "none";
+    }
+  }, 300);
+}
 
   close.addEventListener("click", closeBlade);
   overlay.addEventListener("click", closeBlade);
